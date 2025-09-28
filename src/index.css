@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Michroma&family=Shadows+Into+Light&display=swap");
+
+@import "tailwindcss";
+
+/* Custom Theme */
+@theme {
+  /* Custom Fonts */
+  --font-outfit: "Outfit", sans-serif;
+  --font-shadows: "Shadows Into Light", cursive, sans-serif;
+
+  /* Custom breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1280px; /* redefined from 1024px */
+
+   /* Custom colors */
+  --color-brand-dark: #302038;
+  --color-brand-primary: #FF5956;
+  --color-brand-grey: #F7F2EE;
+
+}
