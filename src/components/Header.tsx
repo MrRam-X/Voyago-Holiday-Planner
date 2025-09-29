@@ -80,12 +80,10 @@ const Header: React.FC = () => {
             <div className="bg-white flex-grow flex items-center justify-between px-6 py-6">
               {/* Logo & Nav Links Group */}
               <div className="flex items-center space-x-12">
-                {/* Logo */}
-                <img
-                  src="./assets/images/voyagoLogo.png"
-                  alt="Voyago Logo"
-                  className="h-12"
-                />
+                {/* --- Add Logo Here Once It Is Ready --- */}
+                <h2 className="text-brand-primary text-3xl font-bold">
+                  Vo<span className="text-black">yago</span>
+                </h2>
 
                 {/* Desktop Menu Links */}
                 <div className="flex items-center space-x-8 text-gray-700">
@@ -148,12 +146,10 @@ const Header: React.FC = () => {
           {/* MOBILE NAVIGATION */}
           <div className="lg:hidden bg-white">
             <div className="container mx-auto px-4 flex justify-between items-center py-4">
-              {/* Logo */}
-              <img
-                src="./assets/images/voyagoLogo.png"
-                alt="Voyago Logo"
-                className="h-12"
-              />
+              {/* --- Add Logo Here Once It Is Ready --- */}
+              <h2 className="text-brand-primary text-3xl font-bold">
+                Vo<span className="text-black">yago</span>
+              </h2>
 
               {/* Mobile Menu Button (Hamburger) */}
               <button
@@ -176,11 +172,10 @@ const Header: React.FC = () => {
         <div className="p-6 h-full overflow-y-auto">
           {/* Drawer Header */}
           <div className="flex justify-between items-center mb-8">
-            <img
-              src="https://i.imgur.com/gCeE82v.png"
-              alt="Voyago Logo White"
-              className="h-10"
-            />
+            {/* --- Add Logo Here Once It Is Ready --- */}
+            <h2 className="text-brand-primary text-3xl font-bold">
+              Vo<span className="text-black">yago</span>
+            </h2>
             <button id="close-menu-button" className="focus:outline-none">
               <FontAwesomeIcon icon={faTimes} className="text-2xl" />
             </button>
