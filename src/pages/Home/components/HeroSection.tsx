@@ -1,4 +1,14 @@
 import React from "react";
+import {
+  faMapMarkerAlt,
+  faHiking,
+  faSearch,
+  faCalendar,
+  faMinusCircle,
+  faPlusCircle,
+  faSlidersH,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const HeroSection: React.FC = () => {
   return (
@@ -53,7 +63,10 @@ const HeroSection: React.FC = () => {
                   </li>
                 </ul>
               </div>
-              <i className="fas fa-map-marker-alt text-gray-400 text-xl ml-4"></i>
+              <FontAwesomeIcon
+                icon={faMapMarkerAlt}
+                className="text-gray-400 text-xl ml-4"
+              />
             </div>
 
             {/* Type Field */}
@@ -79,7 +92,10 @@ const HeroSection: React.FC = () => {
                   </li>
                 </ul>
               </div>
-              <i className="fas fa-hiking text-gray-400 text-xl ml-4"></i>
+              <FontAwesomeIcon
+                icon={faHiking}
+                className="text-gray-400 text-xl ml-4"
+              />
             </div>
 
             {/* Date From Field */}
@@ -93,7 +109,10 @@ const HeroSection: React.FC = () => {
                   Select Date
                 </span>
               </div>
-              <i className="fas fa-calendar-alt text-gray-400 text-xl ml-4"></i>
+              <FontAwesomeIcon
+                icon={faCalendar}
+                className="text-gray-400 text-xl ml-4"
+              />
 
               <div
                 id="date-picker-container"
@@ -140,20 +159,26 @@ const HeroSection: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3 text-gray-400">
                 <button id="decrement-guests">
-                  <i className="fas fa-minus-circle text-gray-500"></i>
+                  <FontAwesomeIcon
+                    icon={faMinusCircle}
+                    className="text-gray-500"
+                  />
                 </button>
                 <button id="increment-guests">
-                  <i className="fas fa-plus-circle text-gray-500"></i>
+                  <FontAwesomeIcon
+                    icon={faPlusCircle}
+                    className="text-gray-500"
+                  />
                 </button>
                 <div className="border-l h-6 border-gray-200"></div>
-                <i className="fas fa-sliders-h cursor-pointer"></i>
+                <FontAwesomeIcon icon={faSlidersH} className="cursor-pointer" />
               </div>
             </div>
           </div>
 
           {/* On mobile, the button now stacks below the form fields */}
-          <button className="bg-brand-primary text-white px-8 py-4 lg:py-0 rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none hover:bg-red-600 transition-colors">
-            <i className="fas fa-search text-2xl"></i>
+          <button className="hero-search-btn bg-brand-primary text-white px-8 py-4 lg:py-0 rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none transition-colors">
+            <FontAwesomeIcon icon={faSearch} className="text-2xl" />
           </button>
         </div>
       </div>

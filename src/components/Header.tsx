@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // Solid icons
 import {
   faClock,
@@ -22,11 +22,22 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openMenu = () => {
+    setIsOpen(true);
+    document.body.style.overflow = "hidden"; // prevent scroll
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.style.overflow = ""; // restore scroll
+  };
+
   return (
     <>
       <header className="absolute top-0 left-0 right-0 z-20">
         {/* Top contact bar */}
-        {/* The parent is now a full-width flex container */}
         <div className="hidden lg:flex w-full">
           {/* Dark section that grows to fill available space */}
           <div className="bg-brand-dark text-white flex-grow flex justify-between items-center pl-4 pr-6">
@@ -118,9 +129,12 @@ const Header: React.FC = () => {
               </div>
 
               {/* Start Booking Button */}
-              <button className="bg-brand-grey text-gray-800 px-6 py-3 mx-5 rounded-md hover:bg-brand-primary hover:text-white font-semibold">
+              <button className="start-booking-btn bg-brand-grey text-gray-800 px-6 py-3 mx-5 rounded-md font-semibold">
                 Start Booking
               </button>
+              {/* <button className="bg-brand-grey text-gray-800 px-6 py-3 mx-5 rounded-md hover:bg-brand-primary hover:text-white font-semibold">
+                Start Booking
+              </button> */}
             </div>
 
             {/* Primary Color Section (Right): Call, Icons */}
@@ -153,6 +167,7 @@ const Header: React.FC = () => {
 
               {/* Mobile Menu Button (Hamburger) */}
               <button
+                onClick={openMenu}
                 id="open-menu-button"
                 className="text-gray-600 focus:outline-none"
               >
@@ -166,7 +181,9 @@ const Header: React.FC = () => {
       {/* Mobile Side-Drawer Menu with Vertical Scrollbar */}
       <div
         id="side-drawer"
-        className="fixed top-0 left-0 h-full w-80 max-w-full bg-brand-dark text-white z-50 transform -translate-x-full transition-transform duration-300 ease-in-out"
+        className={`fixed top-0 left-0 h-full w-80 max-w-full bg-brand-dark text-white z-50 transform ${
+          !isOpen ? "-translate-x-full" : ""
+        } transition-transform duration-300 ease-in-out`}
       >
         {/* This div is now scrollable on the Y-axis if its content overflows */}
         <div className="p-6 h-full overflow-y-auto">
@@ -174,9 +191,13 @@ const Header: React.FC = () => {
           <div className="flex justify-between items-center mb-8">
             {/* --- Add Logo Here Once It Is Ready --- */}
             <h2 className="text-brand-primary text-3xl font-bold">
-              Vo<span className="text-black">yago</span>
+              Vo<span className="text-white">yago</span>
             </h2>
-            <button id="close-menu-button" className="focus:outline-none">
+            <button
+              id="close-menu-button"
+              onClick={closeMenu}
+              className="focus:outline-none"
+            >
               <FontAwesomeIcon icon={faTimes} className="text-2xl" />
             </button>
           </div>
@@ -254,7 +275,10 @@ const Header: React.FC = () => {
           {/* Contact Info */}
           <div className="mt-12 space-y-4">
             <div className="flex items-center space-x-3">
-              <i className="fas fa-envelope text-brand-primary text-xl"></i>
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="text-brand-primary text-xl"
+              />
               <span>needhelp@trevlo.com</span>
             </div>
             <div className="flex items-center space-x-3">
@@ -285,8 +309,9 @@ const Header: React.FC = () => {
       </div>
       {/* Overlay for Side-Drawer */}
       <div
+        onClick={closeMenu}
         id="menu-overlay"
-        className="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+        className={`fixed inset-0 bg-black/50 z-40 ${!isOpen ? "hidden" : ""}`}
       ></div>
     </>
   );
