@@ -39,7 +39,6 @@ const Header: React.FC = () => {
       <header className="absolute top-0 left-0 right-0 z-20">
         {/* Top contact bar */}
         <div className="hidden lg:flex w-full">
-          {/* Dark section that grows to fill available space */}
           <div className="bg-brand-dark text-white flex-grow flex justify-between items-center pl-4 pr-6">
             {/* Left Side: Address & Email */}
             <div className="flex items-center space-x-6 text-sm">
@@ -132,9 +131,6 @@ const Header: React.FC = () => {
               <button className="start-booking-btn bg-brand-grey text-gray-800 px-6 py-3 mx-5 rounded-md font-semibold">
                 Start Booking
               </button>
-              {/* <button className="bg-brand-grey text-gray-800 px-6 py-3 mx-5 rounded-md hover:bg-brand-primary hover:text-white font-semibold">
-                Start Booking
-              </button> */}
             </div>
 
             {/* Primary Color Section (Right): Call, Icons */}
@@ -157,7 +153,7 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* MOBILE NAVIGATION */}
+          {/* Mobile Navigation */}
           <div className="lg:hidden bg-white">
             <div className="container mx-auto px-4 flex justify-between items-center py-4">
               {/* --- Add Logo Here Once It Is Ready --- */}
@@ -185,7 +181,6 @@ const Header: React.FC = () => {
           !isOpen ? "-translate-x-full" : ""
         } transition-transform duration-300 ease-in-out`}
       >
-        {/* This div is now scrollable on the Y-axis if its content overflows */}
         <div className="p-6 h-full overflow-y-auto">
           {/* Drawer Header */}
           <div className="flex justify-between items-center mb-8">

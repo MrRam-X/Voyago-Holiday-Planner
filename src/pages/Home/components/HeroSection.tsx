@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   faMapMarkerAlt,
   faHiking,
@@ -9,8 +9,22 @@ import {
   faSlidersH,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { HERO_SECTION_CAROUSEL_IMAGES } from "../../../appConstant";
 
 const HeroSection: React.FC = () => {
+  const [currentHeroSectionObjectIdx, setCurrentHeroSectionObjectIdx] =
+    useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHeroSectionObjectIdx(
+        (prevHeroIdx) => (prevHeroIdx + 1) % HERO_SECTION_CAROUSEL_IMAGES.length
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="hero"
@@ -20,6 +34,9 @@ const HeroSection: React.FC = () => {
         <div
           id="hero-bg"
           className="absolute inset-0 bg-cover bg-center hero-bg-animate"
+          style={{
+            backgroundImage: `url(${HERO_SECTION_CAROUSEL_IMAGES[currentHeroSectionObjectIdx].imageUrl})`,
+          }}
         ></div>
       </div>
       <div className="absolute inset-0 bg-black opacity-40"></div>
@@ -27,16 +44,21 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 text-center w-full max-w-6xl">
         <div className="hero-text-animate">
           <p className="text-4xl font-light tracking-widest font-shadows">
-            Beauty and Discovery
+            {
+              HERO_SECTION_CAROUSEL_IMAGES[currentHeroSectionObjectIdx]
+                .secondaryTitle
+            }
           </p>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold my-4">
-            Explore the World
+            {
+              HERO_SECTION_CAROUSEL_IMAGES[currentHeroSectionObjectIdx]
+                .primaryTitle
+            }
           </h1>
         </div>
 
         {/* Booking Form */}
         <div className="hero-form-animate bg-white text-gray-600 rounded-lg shadow-2xl flex flex-col lg:flex-row items-stretch w-full mx-auto mt-12">
-          {/* On mobile, the form fields now stack vertically inside this container */}
           <div className="flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
             {/* Location Field */}
             <div className="flex items-center justify-between p-4 border-b lg:border-b-0 lg:border-r border-gray-200">
@@ -176,7 +198,6 @@ const HeroSection: React.FC = () => {
             </div>
           </div>
 
-          {/* On mobile, the button now stacks below the form fields */}
           <button className="hero-search-btn bg-brand-primary text-white px-8 py-4 lg:py-0 rounded-b-lg lg:rounded-r-lg lg:rounded-bl-none transition-colors">
             <FontAwesomeIcon icon={faSearch} className="text-2xl" />
           </button>
